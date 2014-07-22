@@ -1,0 +1,4 @@
+[submodule "PinBoard/ShinobiPlayUtils"]
+	path = PinBoard/ShinobiPlayUtils
+	url = git@bitbucket.org:shinobicontrols/shinobi-play-utils.git
+	branch = master

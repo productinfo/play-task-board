@@ -6,12 +6,12 @@
 //  Copyright (c) 2013 Scott Logic. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface PinBoardTaskView : UIImageView
 
-@property (nonatomic, assign) int taskNumber;
+@property (nonatomic, assign) NSInteger taskNumber;
 @property (nonatomic, strong) NSString *taskColor;
-@property (nonatomic, assign) float taskMins;
+@property (nonatomic, assign) CGFloat taskMins;
 
 @end

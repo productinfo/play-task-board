@@ -56,7 +56,7 @@
 		68EE78DA197D161800AE88AD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		68EE78DE197D161800AE88AD /* PinBoard-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PinBoard-Info.plist"; sourceTree = "<group>"; };
 		68EE78E0197D161800AE88AD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		68EE78E2197D161800AE88AD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = main.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		68EE78E2197D161800AE88AD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = main.m; sourceTree = "<group>"; };
 		68EE78E4197D161800AE88AD /* PinBoard-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PinBoard-Prefix.pch"; sourceTree = "<group>"; };
 		68EE78E5197D161800AE88AD /* PinBoardAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PinBoardAppDelegate.h; sourceTree = "<group>"; };
 		68EE78E6197D161800AE88AD /* PinBoardAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PinBoardAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };

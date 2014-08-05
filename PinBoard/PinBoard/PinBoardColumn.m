@@ -8,7 +8,6 @@
 
 #import "PinBoardColumn.h"
 #import "PinBoardTaskView.h"
-#import <ShinobiEssentials/ShinobiEssentials.h>
 
 @interface PinBoardColumn()
 
@@ -20,7 +19,7 @@
 
 @implementation PinBoardColumn
 
-- (id)initWithFrame:(CGRect)frame andTitle:(NSString*) title {
+- (instancetype)initWithFrame:(CGRect)frame andTitle:(NSString*) title {
   // Create a wrapper and style for the flow layout, which we'll use when we instantiate super
   SEssentialsFlowLayoutImagesWrapper *wrapper = [SEssentialsFlowLayoutImagesWrapper new];
   wrapper.trashcanImage = [UIImage imageNamed:@"bin"];
@@ -42,7 +41,6 @@
     self.verticalPadding = 50;
     self.clipsToBounds = NO;
     self.animationType = SEssentialsAnimationUser;
-    //self.flowDelegate = self;
     self.style.mainViewTintColor = [UIColor clearColor];
     
     // Add background image
@@ -54,7 +52,7 @@
     self.flowTotalLabel.textAlignment = NSTextAlignmentCenter;
     self.flowTotalLabel.font = [UIFont fontWithName:@"AmericanTypewriter-Bold" size:30.f];
     self.flowTotalLabel.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.95];
-    [self.flowTotalLabel setBackgroundColor: [UIColor clearColor]];
+    self.flowTotalLabel.backgroundColor = [UIColor clearColor];
     [self addSubview:self.flowTotalLabel];
     [self updateFlowTotals];
     
@@ -63,7 +61,7 @@
     self.titleLabel.text = title;
     self.titleLabel.font = [UIFont fontWithName:@"AmericanTypewriter-Bold" size:30.f];
     self.titleLabel.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.95];
-    [self.titleLabel setBackgroundColor:[UIColor clearColor]];
+    self.titleLabel.backgroundColor = [UIColor clearColor];
     [self.titleLabel sizeToFit];
     self.titleLabel.center = CGPointMake(self.bounds.size.width/2, 20);
     [self addSubview:self.titleLabel];
@@ -71,7 +69,7 @@
   return self;
 }
 
--(void) layoutSubviews {
+- (void)layoutSubviews {
   [super layoutSubviews];
   
   // Make sure the content view fills the frame to avoid scrolling effects (as we're a
@@ -81,7 +79,7 @@
   }
 }
 
--(void) updateFlowTotals {
+- (void)updateFlowTotals {
   float total = 0.f;
   
   for (PinBoardTaskView *task in self.managedViews) {
@@ -102,79 +100,35 @@
 
 #pragma mark Sorting
 
--(void)sortByTask:(BOOL)descending {
-  NSArray *reordered = [self.managedViews sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-    PinBoardTaskView *view1 = (PinBoardTaskView*)obj1;
-    PinBoardTaskView *view2 = (PinBoardTaskView*)obj2;
-    
-    int taskNum1 = view1.taskNumber;
-    int taskNum2 = view2.taskNumber;
-    
-    return (descending) ? taskNum2 - taskNum1 : taskNum1 - taskNum2;
+- (void)sortByTask:(BOOL)descending {
+  NSArray *reordered = [self.managedViews sortedArrayUsingComparator:^NSComparisonResult(PinBoardTaskView *view1, PinBoardTaskView *view2) {
+    return (descending ? -1 : 1) * (view1.taskNumber - view2.taskNumber);
   }];
   
   [self reorderManagedSubviews:reordered animated:YES];
 }
 
--(void)sortByTime:(BOOL)descending {
-  NSArray *reordered = [self.managedViews sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-    PinBoardTaskView *view1 = (PinBoardTaskView*)obj1;
-    PinBoardTaskView *view2 = (PinBoardTaskView*)obj2;
-    
-    float taskNum1 = view1.taskMins;
-    float taskNum2 = view2.taskMins;
-    
-    return (descending) ? taskNum2 - taskNum1 : taskNum1 - taskNum2;
+- (void)sortByTime:(BOOL)descending {
+  NSArray *reordered = [self.managedViews sortedArrayUsingComparator:^NSComparisonResult(PinBoardTaskView *view1, PinBoardTaskView *view2) {
+    return (descending ? -1 : 1) * (view1.taskMins - view2.taskMins);
   }];
   
-  [self reorderManagedSubviews:reordered animated:YES];}
+  [self reorderManagedSubviews:reordered animated:YES];
+}
 
--(void)sortByType:(BOOL)descending {
-  NSArray *reordered = [self.managedViews sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-    PinBoardTaskView *view1 = (PinBoardTaskView*)obj1;
-    PinBoardTaskView *view2 = (PinBoardTaskView*)obj2;
-    
-    NSComparisonResult result = [view1.taskColor compare:view2.taskColor];
-    return (descending) ? -result : result;
+- (void)sortByType:(BOOL)descending {
+  NSArray *reordered = [self.managedViews sortedArrayUsingComparator:^NSComparisonResult(PinBoardTaskView *view1, PinBoardTaskView *view2) {
+    return (descending ? -1 : 1) * [view1.taskColor compare:view2.taskColor];
   }];
   
-  [self reorderManagedSubviews:reordered animated:YES];}
+  [self reorderManagedSubviews:reordered animated:YES];
+}
 
 #pragma mark Flow Layout methods
 
--(void)addManagedSubview:(UIView *)subview {
+- (void)addManagedSubview:(UIView *)subview {
   [super addManagedSubview:subview];
   [self updateFlowTotals];
 }
-
-#pragma mark Delegate methods
-// These methods mostly just pass calls on to the manager to cope with switching views
-// between flow layouts
-
-/*-(BOOL)flowLayout:(SEssentialsFlowLayout *)flow shouldMoveView:(UIView *)view {
-  return [self.manager flowLayout:flow shouldMoveView:view];
-}
-
--(void)flowLayout:(SEssentialsFlowLayout *)flow didDragView:(UIView *)view {
-  [self.manager flowLayout:flow didDragView:view];
-}
-
--(void)didBeginEditInFlowLayout:(SEssentialsFlowLayout *)flow {
-  [self.manager didBeginEditInFlowLayout:flow];
-}
-
--(void)didEndEditInFlowLayout:(SEssentialsFlowLayout *)flow {
-  [self.manager didEndEditInFlowLayout:flow];
-}
-
--(void)flowLayout:(SEssentialsFlowLayout *)flow didRemoveView:(UIView *)view {
-  [self updateFlowTotals];
-  [self.manager flowLayout:flow didRemoveView:view];
-}
-
--(CGPoint)editButtonPositionInFlowLayout:(SEssentialsFlowLayout *)flow {
-  CGPoint destination = ((PinBoardViewController*)self.manager).binImage.center;
-  return [((PinBoardViewController*)self.manager).view convertPoint:destination toView:self];
-}*/
 
 @end

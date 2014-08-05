@@ -12,6 +12,4 @@
 
 @interface PinBoardViewController : SPUGalleryManagedViewController<SEssentialsFlowLayoutDelegate>
 
-@property (strong, nonatomic) IBOutlet UIImageView *binImage;
-
 @end

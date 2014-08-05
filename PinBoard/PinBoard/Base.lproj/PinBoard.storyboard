@@ -158,8 +158,8 @@
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
-                        <outlet property="binImage" destination="65w-OR-kA5" id="jm9-Vl-WvX"/>
-                        <outlet property="placeholder" destination="3nJ-hM-ffr" id="0YT-rg-KjB"/>
+                        <outlet property="binImageView" destination="65w-OR-kA5" id="6IN-d2-hab"/>
+                        <outlet property="placeholder" destination="3nJ-hM-ffr" id="X0t-un-B9E"/>
                         <outlet property="sortByLabel" destination="IoL-lY-5Ag" id="1gn-In-u1b"/>
                         <outlet property="startOverLabel" destination="b0d-y1-rim" id="hj6-ML-iz0"/>
                         <outlet property="taskSortButton" destination="Ytv-dg-qbf" id="tme-8o-ULi"/>

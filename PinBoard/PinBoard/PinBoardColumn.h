@@ -13,7 +13,7 @@
 
 @property (weak, nonatomic) id<SEssentialsFlowLayoutDelegate> manager;
 
-- (id)initWithFrame:(CGRect)frame andTitle:(NSString*) title;
+- (instancetype)initWithFrame:(CGRect)frame andTitle:(NSString*) title;
 - (void)updateFlowTotals;
 
 - (void)sortByTime:(BOOL)descending;

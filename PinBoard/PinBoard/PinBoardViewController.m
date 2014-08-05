@@ -10,27 +10,28 @@
 #import "PinBoardColumn.h"
 #import "PinBoardTaskView.h"
 
-typedef enum sortFuncSelection {
-  SORT_TASK = 1,
+typedef NS_ENUM(NSInteger, PinBoardSortFunc) {
+  SORT_TASK,
   SORT_TYPE,
   SORT_TIME
-} sortFunc;
+};
 
 @interface PinBoardViewController ()
 
 @property (strong, nonatomic) NSMutableArray *flowLayouts;
 @property (strong, nonatomic) UILongPressGestureRecognizer *gestureInProgress;
 @property (assign, nonatomic) BOOL descending;
-@property (assign, nonatomic) sortFunc selectedSort;
+@property (assign, nonatomic) PinBoardSortFunc selectedSort;
 @property (assign, nonatomic) BOOL initialLoad;
 
-@property (strong, nonatomic) IBOutlet UIView *placeholder;
-@property (strong, nonatomic) IBOutlet UILabel *startOverLabel;
-@property (strong, nonatomic) IBOutlet UILabel *sortByLabel;
-@property (strong, nonatomic) IBOutlet UILabel *viewTitleLabel;
-@property (strong, nonatomic) IBOutlet UIButton *taskSortButton;
-@property (strong, nonatomic) IBOutlet UIButton *timeSortButton;
-@property (strong, nonatomic) IBOutlet UIButton *typeSortButton;
+@property (weak, nonatomic) IBOutlet UIView *placeholder;
+@property (weak, nonatomic) IBOutlet UILabel *startOverLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sortByLabel;
+@property (weak, nonatomic) IBOutlet UILabel *viewTitleLabel;
+@property (weak, nonatomic) IBOutlet UIButton *taskSortButton;
+@property (weak, nonatomic) IBOutlet UIButton *timeSortButton;
+@property (weak, nonatomic) IBOutlet UIButton *typeSortButton;
+@property (weak, nonatomic) IBOutlet UIImageView *binImageView;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *allButtons;
 
 - (IBAction)sortAscending:(id)sender;
@@ -88,35 +89,33 @@ typedef enum sortFuncSelection {
   [self createTasks];
 }
 
--(void) createTasks {
+- (void)createTasks {
   // Get task data from property list
   NSString* path = [[NSBundle mainBundle] pathForResource:@"Tasks" ofType:@"plist"];
-  if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-    NSArray* tasks = [[NSArray alloc] initWithContentsOfFile:path];
-    for (int i = 0; i < [tasks count]; i++) {
-      NSDictionary* task = tasks[i];
-      UIImage *image = [UIImage imageNamed:task[@"Image"]];
-      PinBoardTaskView *view = [[PinBoardTaskView alloc] initWithImage:image];
-      
-      view.taskNumber = i+1;
-      view.taskColor = task[@"Color"];
-      view.taskMins = [task[@"Minutes"] floatValue];
-      
-      // Get rid of jagged edges
-      view.layer.shouldRasterize = YES;
-      view.layer.rasterizationScale = [UIScreen mainScreen].scale;
-      view.clipsToBounds = NO;
-      
-      // Add to the first column ("TODO")
-      [self.flowLayouts[0] addManagedSubview:view];
-    }
+  NSArray* tasks = [NSArray arrayWithContentsOfFile:path];
+  for (int i = 0; i < [tasks count]; i++) {
+    NSDictionary* task = tasks[i];
+    UIImage *image = [UIImage imageNamed:task[@"Image"]];
+    PinBoardTaskView *view = [[PinBoardTaskView alloc] initWithImage:image];
+    
+    view.taskNumber = i+1;
+    view.taskColor = task[@"Color"];
+    view.taskMins = [task[@"Minutes"] floatValue];
+    
+    // Get rid of jagged edges
+    view.layer.shouldRasterize = YES;
+    view.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    view.clipsToBounds = NO;
+    
+    // Add to the first column ("TODO")
+    [self.flowLayouts[0] addManagedSubview:view];
   }
   
   self.descending = NO;
   [self sortTask:nil];
 }
 
--(void) configureFlow:(PinBoardColumn*)flow {
+- (void)configureFlow:(PinBoardColumn*)flow {
   [self.flowLayouts addObject:flow];
   flow.manager = self;
   [self.placeholder addSubview:flow];
@@ -130,12 +129,12 @@ typedef enum sortFuncSelection {
     [column beginEditMode];
   }
   // Bring this subview to the front
-  [self deactivateButtons];
+  [self setButtonsActive:NO];
   [self.placeholder bringSubviewToFront:flow];
 }
 
 - (void)didEndEditInFlowLayout:(SEssentialsFlowLayout *)flow {
-  [self reactivateButtons];
+  [self setButtonsActive:YES];
   
   // Take all columns out of edit mode
   for (PinBoardColumn *column in self.flowLayouts) {
@@ -143,14 +142,14 @@ typedef enum sortFuncSelection {
   }
 }
 
--(void)flowLayout:(SEssentialsFlowLayout *)flow didRemoveView:(UIView *)view {
+- (void)flowLayout:(SEssentialsFlowLayout *)flow didRemoveView:(UIView *)view {
   if ([flow respondsToSelector:@selector(updateFlowTotals)]) {
     [(PinBoardColumn*)flow updateFlowTotals];
   }
   self.gestureInProgress = nil;
 }
 
--(BOOL)flowLayout:(SEssentialsFlowLayout *)flow shouldMoveView:(UIView *)view {
+- (BOOL)flowLayout:(SEssentialsFlowLayout *)flow shouldMoveView:(UIView *)view {
   // Work out if the gesture is within the bounds.
   // NB: DON'T use the dragPosition, as the view gets stuck after it leaves, but the gesture doesn't.
   UILongPressGestureRecognizer *currentGesture = view.gestureRecognizers[0];
@@ -183,7 +182,7 @@ typedef enum sortFuncSelection {
   return insideBounds && !anotherViewInProgress;
 }
 
--(void)flowLayout:(PinBoardColumn *)flow didDragView:(UIView *)view {
+- (void)flowLayout:(PinBoardColumn *)flow didDragView:(UIView *)view {
   // Get the current position of the dragged view relative to our placeholder
   CGPoint dragPosition = [view.superview convertPoint:view.center toView:self.placeholder];
   
@@ -209,8 +208,8 @@ typedef enum sortFuncSelection {
   }
 }
 
--(CGPoint)editButtonPositionInFlowLayout:(SEssentialsFlowLayout *)flow {
-  CGPoint destination = self.binImage.center;
+- (CGPoint)editButtonPositionInFlowLayout:(SEssentialsFlowLayout *)flow {
+  CGPoint destination = self.binImageView.center;
   return [self.view convertPoint:destination toView:flow];
 }
 
@@ -225,18 +224,10 @@ typedef enum sortFuncSelection {
   }
 }
 
-
--(void) deactivateButtons {
+- (void)setButtonsActive:(BOOL)active {
   for (UIButton *button in _allButtons) {
-    button.userInteractionEnabled = NO;
-    button.alpha = 0.7f;
-  }
-}
-
--(void) reactivateButtons {
-  for (UIButton *button in _allButtons) {
-    button.userInteractionEnabled = YES;
-    button.alpha = 1.f;
+    button.userInteractionEnabled = active;
+    button.alpha = active ? 1.f : 0.7f;
   }
 }
 
@@ -264,7 +255,7 @@ typedef enum sortFuncSelection {
   [self doSortByFunc:SORT_TYPE selectedButton:self.typeSortButton];
 }
 
-- (IBAction) doSortByFunc:(sortFunc)sortFunc selectedButton:(UIButton*)selectedButton {
+- (IBAction)doSortByFunc:(PinBoardSortFunc)sortFunc selectedButton:(UIButton*)selectedButton {
   // Put ring around relevant sort button (and clear the rest)
   for (UIButton* button in self.allButtons) {
     if (button == selectedButton) {
@@ -284,7 +275,7 @@ typedef enum sortFuncSelection {
   [self doSort];
 }
 
-- (IBAction) doSort {
+- (IBAction)doSort {
   for (PinBoardColumn *flow in self.flowLayouts) {
     switch (self.selectedSort) {
       case SORT_TASK:
@@ -301,7 +292,7 @@ typedef enum sortFuncSelection {
 }
 
 // Wind back to factory settings
--(IBAction) reset {
+-(IBAction)reset {
   for (PinBoardColumn *flow in self.flowLayouts) {
     for (UIView *view in [flow.managedViews copy]) {
       [flow removeManagedSubview:view animated:NO];
@@ -310,20 +301,6 @@ typedef enum sortFuncSelection {
   
   self.selectedSort = 0;
   [self createTasks];
-}
-
-#pragma mark Parent functions
-
-- (void)viewDidUnload {
-  [self setPlaceholder:nil];
-  [self setBinImage:nil];
-  [self setTaskSortButton:nil];
-  [self setTimeSortButton:nil];
-  [self setTypeSortButton:nil];
-  [self setSortByLabel:nil];
-  [self setStartOverLabel:nil];
-  [self setAllButtons:nil];
-  [super viewDidUnload];
 }
 
 @end

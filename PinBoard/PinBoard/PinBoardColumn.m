@@ -41,6 +41,7 @@
     self.verticalSubviewSpacing = -5.f;
     self.verticalPadding = 50;
     self.clipsToBounds = NO;
+    self.animationType = SEssentialsAnimationUser;
     //self.flowDelegate = self;
     self.style.mainViewTintColor = [UIColor clearColor];
     

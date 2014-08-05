@@ -22,6 +22,7 @@ typedef enum sortFuncSelection {
 @property (strong, nonatomic) UILongPressGestureRecognizer *gestureInProgress;
 @property (assign, nonatomic) BOOL descending;
 @property (assign, nonatomic) sortFunc selectedSort;
+@property (assign, nonatomic) BOOL initialLoad;
 
 @property (strong, nonatomic) IBOutlet UIView *placeholder;
 @property (strong, nonatomic) IBOutlet UILabel *startOverLabel;
@@ -48,7 +49,9 @@ typedef enum sortFuncSelection {
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  self.initialLoad = YES;
   [self createFlows];
+  self.initialLoad = NO;
 }
 
 #pragma mark Multiflow-specific functions
@@ -81,7 +84,7 @@ typedef enum sortFuncSelection {
                                                          andTitle:@"DONE"];
   [self configureFlow:column3];
   
-  [column1 beginEditMode];  
+  [column1 beginEditMode];
   [self createTasks];
 }
 
@@ -210,6 +213,18 @@ typedef enum sortFuncSelection {
   CGPoint destination = self.binImage.center;
   return [self.view convertPoint:destination toView:flow];
 }
+
+// Implement a custom animation, so we can avoid animating on the initial load
+- (void)flowLayout:(SEssentialsFlowLayout *)flow animateView:(UIView *)view toTarget:(CGPoint)target {
+  if (self.initialLoad) {
+    view.center = target;
+  } else {
+    [UIView animateWithDuration:flow.movementAnimationDuration animations:^{
+      view.center = target;
+    }];
+  }
+}
+
 
 -(void) deactivateButtons {
   for (UIButton *button in _allButtons) {

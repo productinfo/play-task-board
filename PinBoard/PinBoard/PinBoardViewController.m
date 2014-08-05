@@ -188,10 +188,12 @@ typedef enum sortFuncSelection {
   for (PinBoardColumn *column in self.flowLayouts) {
     if(CGRectContainsPoint(column.frame, dragPosition)) {
       if (column != flow) {
-        // Calculate new frame for task, remove it from old column and add to new column
+        // Calculate new frame for task, relative to the new column
         view.frame = [column convertRect:view.frame fromView:flow];
-        [flow unmanageSubview:view];
+        // Add the task to the new column before removing it from the old, to make sure
+        // the view isn't garbage-collected in between
         [column addManagedSubview:view];
+        [flow unmanageSubview:view];
         
         // Update the flow totals
         [flow updateFlowTotals];

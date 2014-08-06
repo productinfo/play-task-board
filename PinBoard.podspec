@@ -25,5 +25,5 @@ Pod::Spec.new do |s|
   s.dependency 'ShinobiPlayUtils'
   s.resources = ['PinBoard/**/Tasks.plist', 'PinBoard/**/PinBoard.storyboard', 'PinBoard/**/*.xcassets']
   s.frameworks = 'QuartzCore', 'ShinobiEssentials'
-  s.xcconfig     = { 'FRAMEWORK_SEARCH_PATHS' => '"$(DEVELOPER_FRAMEWORKS_DIR)"' }
+  s.xcconfig     = { 'FRAMEWORK_SEARCH_PATHS' => '"$(DEVELOPER_FRAMEWORKS_DIR)" "$(PROJECT_DIR)/../"' }
 end

@@ -11,7 +11,7 @@
 #import "PinBoardTaskView.h"
 
 typedef NS_ENUM(NSInteger, PinBoardSortFunc) {
-  SORT_TASK,
+  SORT_TASK = 1,
   SORT_TYPE,
   SORT_TIME
 };
@@ -193,7 +193,7 @@ typedef NS_ENUM(NSInteger, PinBoardSortFunc) {
         // Calculate new frame for task, relative to the new column
         view.frame = [column convertRect:view.frame fromView:flow];
         // Add the task to the new column before removing it from the old, to make sure
-        // the view isn't garbage-collected in between
+        // the view isn't de-alloced in between
         [column addManagedSubview:view];
         [flow unmanageSubview:view];
         
@@ -292,7 +292,7 @@ typedef NS_ENUM(NSInteger, PinBoardSortFunc) {
 }
 
 // Wind back to factory settings
--(IBAction)reset {
+- (IBAction)reset {
   for (PinBoardColumn *flow in self.flowLayouts) {
     for (UIView *view in [flow.managedViews copy]) {
       [flow removeManagedSubview:view animated:NO];

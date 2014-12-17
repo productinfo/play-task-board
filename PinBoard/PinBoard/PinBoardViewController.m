@@ -211,8 +211,9 @@ typedef NS_ENUM(NSInteger, PinBoardSortFunc) {
 }
 
 - (CGPoint)editButtonPositionInFlowLayout:(SEssentialsFlowLayout *)flow {
-  return [self.view convertPoint:CGPointMake(self.containerView.frame.origin.x + self.binImageView.center.x,
-                                             self.containerView.frame.origin.y + self.binImageView.center.y) toView:flow];
+  CGPoint destination = CGPointMake(self.containerView.frame.origin.x + self.binImageView.center.x,
+                                    self.containerView.frame.origin.y + self.binImageView.center.y);
+  return [self.view convertPoint:destination toView:flow];
 }
 
 // Implement a custom animation, so we can avoid animating on the initial load

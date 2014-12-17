@@ -23,7 +23,6 @@
   // Create a wrapper and style for the flow layout, which we'll use when we instantiate super
   SEssentialsFlowLayoutImagesWrapper *wrapper = [SEssentialsFlowLayoutImagesWrapper new];
   UIImage *bin = [UIImage imageNamed:@"bin"];
-  bin = [PinBoardColumn imageWithImage:bin scaledToSize:CGSizeMake(100, 62)];
   wrapper.trashcanImage = bin;
   wrapper.trashcanMask = bin;
   SEssentialsFlowLayoutStyle *style = [[SEssentialsFlowLayoutStyle alloc]
@@ -69,17 +68,6 @@
     [self addSubview:self.titleLabel];
   }
   return self;
-}
-
-+ (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
-  //UIGraphicsBeginImageContext(newSize);
-  // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
-  // Pass 1.0 to force exact pixel size.
-  UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
-  [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
-  UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-  UIGraphicsEndImageContext();
-  return newImage;
 }
 
 - (void)layoutSubviews {

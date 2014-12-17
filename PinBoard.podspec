@@ -6,7 +6,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = "PinBoard"
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = "A pin board using various ShinobiEssentials components"
   s.description      = <<-DESC
                        A pin board which uses SEssentialsFlowLayout and other Essentials components.
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.homepage         = "http://www.shinobicontrols.com"
   s.license          = 'Apache License, Version 2.0'
   s.author           = { "Alison Clarke" => "aclarke@shinobicontrols.com" }
-  s.source           = { :git => "git@bitbucket.org:shinobicontrols/play-pin-board.git", 
+  s.source           = { :git => "https://bitbucket.org/shinobicontrols/play-pin-board.git", 
                          :tag => s.version.to_s,
                          :submodules => true 
                        }

@@ -24,6 +24,7 @@ typedef NS_ENUM(NSInteger, PinBoardSortFunc) {
 @property (assign, nonatomic) PinBoardSortFunc selectedSort;
 @property (assign, nonatomic) BOOL initialLoad;
 
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIView *placeholder;
 @property (weak, nonatomic) IBOutlet UILabel *startOverLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sortByLabel;
@@ -103,6 +104,7 @@ typedef NS_ENUM(NSInteger, PinBoardSortFunc) {
     view.taskMins = [task[@"Minutes"] floatValue];
     
     // Get rid of jagged edges
+    view.frame = CGRectMake(0, 0, 235, 51);
     view.layer.shouldRasterize = YES;
     view.layer.rasterizationScale = [UIScreen mainScreen].scale;
     view.clipsToBounds = NO;
@@ -209,7 +211,8 @@ typedef NS_ENUM(NSInteger, PinBoardSortFunc) {
 }
 
 - (CGPoint)editButtonPositionInFlowLayout:(SEssentialsFlowLayout *)flow {
-  CGPoint destination = self.binImageView.center;
+  CGPoint destination = CGPointMake(self.containerView.frame.origin.x + self.binImageView.center.x,
+                                    self.containerView.frame.origin.y + self.binImageView.center.y);
   return [self.view convertPoint:destination toView:flow];
 }
 

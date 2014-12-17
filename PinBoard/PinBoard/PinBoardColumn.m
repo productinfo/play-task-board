@@ -22,8 +22,9 @@
 - (instancetype)initWithFrame:(CGRect)frame andTitle:(NSString*) title {
   // Create a wrapper and style for the flow layout, which we'll use when we instantiate super
   SEssentialsFlowLayoutImagesWrapper *wrapper = [SEssentialsFlowLayoutImagesWrapper new];
-  wrapper.trashcanImage = [UIImage imageNamed:@"bin"];
-  wrapper.trashcanMask = [UIImage imageNamed:@"bin"];
+  UIImage *bin = [UIImage imageNamed:@"bin"];
+  wrapper.trashcanImage = bin;
+  wrapper.trashcanMask = bin;
   SEssentialsFlowLayoutStyle *style = [[SEssentialsFlowLayoutStyle alloc]
                                        initWithTheme:[ShinobiEssentials theme]
                                        customImages:wrapper];
@@ -38,7 +39,7 @@
     self.dragsOutsideBounds = YES;
     self.clipsToBounds = NO;
     self.verticalSubviewSpacing = -5.f;
-    self.verticalPadding = 50;
+    self.verticalPadding = 35;
     self.clipsToBounds = NO;
     self.animationType = SEssentialsAnimationUser;
     self.style.mainViewTintColor = [UIColor clearColor];
@@ -50,7 +51,7 @@
     // Create the total at the bottom
     self.flowTotalLabel = [UILabel new];
     self.flowTotalLabel.textAlignment = NSTextAlignmentCenter;
-    self.flowTotalLabel.font = [UIFont fontWithName:@"AmericanTypewriter-Bold" size:30.f];
+    self.flowTotalLabel.font = [UIFont fontWithName:@"AmericanTypewriter-Bold" size:20.f];
     self.flowTotalLabel.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.95];
     self.flowTotalLabel.backgroundColor = [UIColor clearColor];
     [self addSubview:self.flowTotalLabel];
@@ -59,7 +60,7 @@
     // Create the title at the top
     self.titleLabel = [UILabel new];
     self.titleLabel.text = title;
-    self.titleLabel.font = [UIFont fontWithName:@"AmericanTypewriter-Bold" size:30.f];
+    self.titleLabel.font = [UIFont fontWithName:@"AmericanTypewriter-Bold" size:20.f];
     self.titleLabel.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.95];
     self.titleLabel.backgroundColor = [UIColor clearColor];
     [self.titleLabel sizeToFit];

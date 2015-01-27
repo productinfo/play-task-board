@@ -3,6 +3,8 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>Name</key>
+		<string>Contact Mr O&apos;Hara about order #000120</string>
 		<key>Color</key>
 		<string>Red</string>
 		<key>Minutes</key>
@@ -11,14 +13,18 @@
 		<string>task_1</string>
 	</dict>
 	<dict>
+		<key>Name</key>
+		<string>Set up meeting with Hattori Utilities concerning Project Hizan</string>
 		<key>Color</key>
-		<string>Yellow</string>
+		<string>Orange</string>
 		<key>Minutes</key>
 		<integer>15</integer>
 		<key>Image</key>
 		<string>task_2</string>
 	</dict>
 	<dict>
+		<key>Name</key>
+		<string>Call Mr Osaka concerning delivery problems</string>
 		<key>Color</key>
 		<string>Red</string>
 		<key>Minutes</key>
@@ -27,6 +33,8 @@
 		<string>task_3</string>
 	</dict>
 	<dict>
+		<key>Name</key>
+		<string>Contact prospects Julia sent across last week</string>
 		<key>Color</key>
 		<string>Red</string>
 		<key>Minutes</key>
@@ -35,6 +43,8 @@
 		<string>task_4</string>
 	</dict>
 	<dict>
+		<key>Name</key>
+		<string>Send travel arrangements for Expo to Marie</string>
 		<key>Color</key>
 		<string>Blue</string>
 		<key>Minutes</key>
@@ -43,6 +53,8 @@
 		<string>task_5</string>
 	</dict>
 	<dict>
+		<key>Name</key>
+		<string>Complete general expenses for last week</string>
 		<key>Color</key>
 		<string>Blue</string>
 		<key>Minutes</key>
@@ -51,6 +63,8 @@
 		<string>task_6</string>
 	</dict>
 	<dict>
+		<key>Name</key>
+		<string>Contact Mrs Koga about quote #000557</string>
 		<key>Color</key>
 		<string>Red</string>
 		<key>Minutes</key>
@@ -59,6 +73,8 @@
 		<string>task_7</string>
 	</dict>
 	<dict>
+		<key>Name</key>
+		<string>Complete website change request for new product lines</string>
 		<key>Color</key>
 		<string>Green</string>
 		<key>Minutes</key>
@@ -67,6 +83,8 @@
 		<string>task_8</string>
 	</dict>
 	<dict>
+		<key>Name</key>
+		<string>Put together prospect packs for new product line</string>
 		<key>Color</key>
 		<string>Green</string>
 		<key>Minutes</key>

@@ -8,10 +8,11 @@
 
 @import UIKit;
 
-@interface PinBoardTaskView : UIImageView
+@interface PinBoardTaskView : UIView
 
+@property (nonatomic, assign) NSString *taskName;
 @property (nonatomic, assign) NSInteger taskNumber;
 @property (nonatomic, strong) NSString *taskColor;
-@property (nonatomic, assign) CGFloat taskMins;
+@property (nonatomic, assign) NSInteger taskMins;
 
 @end

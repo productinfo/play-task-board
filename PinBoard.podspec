@@ -6,7 +6,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = "PinBoard"
-  s.version          = '0.1.2'
+  s.version          = '0.1.3'
   s.summary          = "A pin board using various ShinobiEssentials components"
   s.description      = <<-DESC
                        A pin board which uses SEssentialsFlowLayout and other Essentials components.
@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.source_files = 'PinBoard/PinBoard/**/*.{h,m}'
   s.dependency 'ShinobiPlayUtils'
-  s.resources = ['PinBoard/**/Tasks.plist', 'PinBoard/**/PinBoard.storyboard', 'PinBoard/**/*.xcassets']
+  s.resources = ['PinBoard/**/PinBoardTasks.plist', 'PinBoard/**/PinBoard.storyboard', 'PinBoard/**/*.xcassets']
   s.frameworks = 'QuartzCore', 'ShinobiEssentials'
   s.xcconfig     = { 'FRAMEWORK_SEARCH_PATHS' => '"$(DEVELOPER_FRAMEWORKS_DIR)" "$(PROJECT_DIR)/../"' }
 end

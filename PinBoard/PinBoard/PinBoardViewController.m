@@ -9,11 +9,13 @@
 #import "PinBoardViewController.h"
 #import "PinBoardColumn.h"
 #import "PinBoardTaskView.h"
+#import "ShinobiPlayUtils/UIFont+SPUFont.h"
+#import "ShinobiPlayUtils/UIColor+SPUColor.h"
 
 typedef NS_ENUM(NSInteger, PinBoardSortFunc) {
-  SORT_TASK = 1,
-  SORT_TYPE,
-  SORT_TIME
+  SORT_TASK = 0,
+  SORT_TIME,
+  SORT_TYPE
 };
 
 @interface PinBoardViewController ()
@@ -26,21 +28,16 @@ typedef NS_ENUM(NSInteger, PinBoardSortFunc) {
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIView *placeholder;
-@property (weak, nonatomic) IBOutlet UILabel *startOverLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sortByLabel;
 @property (weak, nonatomic) IBOutlet UILabel *viewTitleLabel;
-@property (weak, nonatomic) IBOutlet UIButton *taskSortButton;
-@property (weak, nonatomic) IBOutlet UIButton *timeSortButton;
-@property (weak, nonatomic) IBOutlet UIButton *typeSortButton;
 @property (weak, nonatomic) IBOutlet UIImageView *binImageView;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *allButtons;
+@property (strong, nonatomic) IBOutletCollection(UIControl) NSArray *allControls;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *sortOrderControl;
 
 - (IBAction)sortAscending:(id)sender;
 - (IBAction)sortDescending:(id)sender;
-- (IBAction)sortTime:(id)sender;
-- (IBAction)sortTask:(id)sender;
-- (IBAction)sortType:(id)sender;
 - (IBAction)reset;
+- (IBAction)sortControlChanged:(id)sender;
 
 @end
 
@@ -54,6 +51,33 @@ typedef NS_ENUM(NSInteger, PinBoardSortFunc) {
   self.initialLoad = YES;
   [self createFlows];
   self.initialLoad = NO;
+  
+  // Style the segmented control
+  NSDictionary *attributes = @{ NSFontAttributeName : [UIFont boldShinobiFontOfSize:15],
+                                NSForegroundColorAttributeName : [UIColor shinobiDarkGrayColor] };
+  [self.sortOrderControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
+  NSDictionary *highlightedAttributes = @{ NSForegroundColorAttributeName : [UIColor whiteColor]};
+  [self.sortOrderControl setTitleTextAttributes:highlightedAttributes forState:UIControlStateHighlighted];
+  
+  // Set its frame and rotate it so we've got a vertical version
+  self.sortOrderControl.frame = CGRectMake(-15, 44, 120, 90);
+  self.sortOrderControl.transform = CGAffineTransformMakeRotation(M_PI / 2.0);
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+  // Rotate the labels within the segmented control in the opposite direction to the way we
+  // rotated the control itself, so they're the right way round again
+  for (UIView *segment in [self.sortOrderControl subviews]) {
+    for (UIView *subview in [segment subviews]) {
+      if ([subview isKindOfClass:[UILabel class]]) {
+        UILabel *label = (UILabel*) subview;
+        label.transform = CGAffineTransformMakeRotation(-M_PI / 2.0);
+      }
+    }
+  }
+  
+  // Make the control appear now it's properly rotated
+  self.sortOrderControl.alpha = 1;
 }
 
 #pragma mark Multiflow-specific functions
@@ -69,21 +93,21 @@ typedef NS_ENUM(NSInteger, PinBoardSortFunc) {
                                                                              0,
                                                                              flowSize.width,
                                                                              flowSize.height)
-                                                         andTitle:@"TO DO"];
+                                                         andTitle:@"To Do"];
   [self configureFlow:column1];
   
   PinBoardColumn *column2 = [[PinBoardColumn alloc] initWithFrame:CGRectMake(borderWidth+flowSize.width,
                                                                              0,
                                                                              flowSize.width,
                                                                              flowSize.height)
-                                                         andTitle:@"IN PROGRESS"];
+                                                         andTitle:@"In Progress"];
   [self configureFlow:column2];
   
   PinBoardColumn *column3 = [[PinBoardColumn alloc] initWithFrame:CGRectMake((borderWidth+flowSize.width)*2,
                                                                              0,
                                                                              flowSize.width,
                                                                              flowSize.height)
-                                                         andTitle:@"DONE"];
+                                                         andTitle:@"Done"];
   [self configureFlow:column3];
   
   [column1 beginEditMode];
@@ -92,21 +116,16 @@ typedef NS_ENUM(NSInteger, PinBoardSortFunc) {
 
 - (void)createTasks {
   // Get task data from property list
-  NSString* path = [[NSBundle mainBundle] pathForResource:@"Tasks" ofType:@"plist"];
+  NSString* path = [[NSBundle mainBundle] pathForResource:@"PinBoardTasks" ofType:@"plist"];
   NSArray* tasks = [NSArray arrayWithContentsOfFile:path];
+  
   for (int i = 0; i < [tasks count]; i++) {
     NSDictionary* task = tasks[i];
-    UIImage *image = [UIImage imageNamed:task[@"Image"]];
-    PinBoardTaskView *view = [[PinBoardTaskView alloc] initWithImage:image];
-    
+    PinBoardTaskView *view = [[PinBoardTaskView alloc] initWithFrame:CGRectMake(0, 0, 248, 45)];
     view.taskNumber = i+1;
+    view.taskName = task[@"Name"];
     view.taskColor = task[@"Color"];
-    view.taskMins = [task[@"Minutes"] floatValue];
-    
-    // Get rid of jagged edges
-    view.frame = CGRectMake(0, 0, 235, 51);
-    view.layer.shouldRasterize = YES;
-    view.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    view.taskMins = [task[@"Minutes"] longValue];
     view.clipsToBounds = NO;
     
     // Add to the first column ("TODO")
@@ -114,7 +133,6 @@ typedef NS_ENUM(NSInteger, PinBoardSortFunc) {
   }
   
   self.descending = NO;
-  [self sortTask:nil];
 }
 
 - (void)configureFlow:(PinBoardColumn*)flow {
@@ -228,9 +246,9 @@ typedef NS_ENUM(NSInteger, PinBoardSortFunc) {
 }
 
 - (void)setButtonsActive:(BOOL)active {
-  for (UIButton *button in _allButtons) {
-    button.userInteractionEnabled = active;
-    button.alpha = active ? 1.f : 0.7f;
+  for (UIControl *control in self.allControls) {
+    control.userInteractionEnabled = active;
+    control.alpha = active ? 1.f : 0.7f;
   }
 }
 
@@ -245,28 +263,8 @@ typedef NS_ENUM(NSInteger, PinBoardSortFunc) {
   self.descending = YES;
   [self doSort];
 }
-
-- (IBAction)sortTime:(id)sender {
-  [self doSortByFunc:SORT_TIME selectedButton:self.timeSortButton];
-}
-
-- (IBAction)sortTask:(id)sender {
-  [self doSortByFunc:SORT_TASK selectedButton:self.taskSortButton];
-}
-
-- (IBAction)sortType:(id)sender {
-  [self doSortByFunc:SORT_TYPE selectedButton:self.typeSortButton];
-}
-
-- (IBAction)doSortByFunc:(PinBoardSortFunc)sortFunc selectedButton:(UIButton*)selectedButton {
-  // Put ring around relevant sort button (and clear the rest)
-  for (UIButton* button in self.allButtons) {
-    if (button == selectedButton) {
-      [button setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"select_sort"]]];
-    } else {
-      [button setBackgroundColor:[UIColor clearColor]];
-    }
-  }
+- (IBAction)sortControlChanged:(id)sender {
+  PinBoardSortFunc sortFunc = self.sortOrderControl.selectedSegmentIndex;
   
   // Reverse the sort order if already sorted by this function
   if (self.selectedSort == sortFunc) {

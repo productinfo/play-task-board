@@ -7,7 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		685D88D4198F9B11002B409E /* Tasks.plist in Resources */ = {isa = PBXBuildFile; fileRef = 685D88D3198F9B11002B409E /* Tasks.plist */; };
+		685D88D4198F9B11002B409E /* PinBoardTasks.plist in Resources */ = {isa = PBXBuildFile; fileRef = 685D88D3198F9B11002B409E /* PinBoardTasks.plist */; };
+		68C2B9DE1A6EBC04005C034E /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68C2B9D21A6EBC04005C034E /* Roboto-Black.ttf */; };
+		68C2B9DF1A6EBC04005C034E /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68C2B9D31A6EBC04005C034E /* Roboto-BlackItalic.ttf */; };
+		68C2B9E01A6EBC04005C034E /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68C2B9D41A6EBC04005C034E /* Roboto-Bold.ttf */; };
+		68C2B9E11A6EBC04005C034E /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68C2B9D51A6EBC04005C034E /* Roboto-BoldItalic.ttf */; };
+		68C2B9E21A6EBC04005C034E /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68C2B9D61A6EBC04005C034E /* Roboto-Italic.ttf */; };
+		68C2B9E31A6EBC04005C034E /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68C2B9D71A6EBC04005C034E /* Roboto-Light.ttf */; };
+		68C2B9E41A6EBC04005C034E /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68C2B9D81A6EBC04005C034E /* Roboto-LightItalic.ttf */; };
+		68C2B9E51A6EBC04005C034E /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68C2B9D91A6EBC04005C034E /* Roboto-Medium.ttf */; };
+		68C2B9E61A6EBC04005C034E /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68C2B9DA1A6EBC04005C034E /* Roboto-MediumItalic.ttf */; };
+		68C2B9E71A6EBC04005C034E /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68C2B9DB1A6EBC04005C034E /* Roboto-Regular.ttf */; };
+		68C2B9E81A6EBC04005C034E /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68C2B9DC1A6EBC04005C034E /* Roboto-Thin.ttf */; };
+		68C2B9E91A6EBC04005C034E /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68C2B9DD1A6EBC04005C034E /* Roboto-ThinItalic.ttf */; };
 		68EE78D7197D161800AE88AD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68EE78D6197D161800AE88AD /* Foundation.framework */; };
 		68EE78D9197D161800AE88AD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68EE78D8197D161800AE88AD /* CoreGraphics.framework */; };
 		68EE78DB197D161800AE88AD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68EE78DA197D161800AE88AD /* UIKit.framework */; };
@@ -49,7 +61,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		685D88D3198F9B11002B409E /* Tasks.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Tasks.plist; path = ../Tasks.plist; sourceTree = "<group>"; };
+		685D88D3198F9B11002B409E /* PinBoardTasks.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PinBoardTasks.plist; path = ../PinBoardTasks.plist; sourceTree = "<group>"; };
+		68C2B9D21A6EBC04005C034E /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
+		68C2B9D31A6EBC04005C034E /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
+		68C2B9D41A6EBC04005C034E /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		68C2B9D51A6EBC04005C034E /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
+		68C2B9D61A6EBC04005C034E /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		68C2B9D71A6EBC04005C034E /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		68C2B9D81A6EBC04005C034E /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
+		68C2B9D91A6EBC04005C034E /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		68C2B9DA1A6EBC04005C034E /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
+		68C2B9DB1A6EBC04005C034E /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		68C2B9DC1A6EBC04005C034E /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		68C2B9DD1A6EBC04005C034E /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
 		68EE78D3197D161800AE88AD /* PinBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68EE78D6197D161800AE88AD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		68EE78D8197D161800AE88AD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -90,6 +114,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		68C2B9D11A6EBC04005C034E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				68C2B9D21A6EBC04005C034E /* Roboto-Black.ttf */,
+				68C2B9D31A6EBC04005C034E /* Roboto-BlackItalic.ttf */,
+				68C2B9D41A6EBC04005C034E /* Roboto-Bold.ttf */,
+				68C2B9D51A6EBC04005C034E /* Roboto-BoldItalic.ttf */,
+				68C2B9D61A6EBC04005C034E /* Roboto-Italic.ttf */,
+				68C2B9D71A6EBC04005C034E /* Roboto-Light.ttf */,
+				68C2B9D81A6EBC04005C034E /* Roboto-LightItalic.ttf */,
+				68C2B9D91A6EBC04005C034E /* Roboto-Medium.ttf */,
+				68C2B9DA1A6EBC04005C034E /* Roboto-MediumItalic.ttf */,
+				68C2B9DB1A6EBC04005C034E /* Roboto-Regular.ttf */,
+				68C2B9DC1A6EBC04005C034E /* Roboto-Thin.ttf */,
+				68C2B9DD1A6EBC04005C034E /* Roboto-ThinItalic.ttf */,
+			);
+			name = Fonts;
+			path = ShinobiPlayUtils/ShinobiPlayUtils/ShinobiPlayUtils/Fonts;
+			sourceTree = SOURCE_ROOT;
+		};
 		68EE78CA197D161700AE88AD = {
 			isa = PBXGroup;
 			children = (
@@ -124,7 +168,8 @@
 		68EE78DC197D161800AE88AD /* PinBoard */ = {
 			isa = PBXGroup;
 			children = (
-				685D88D3198F9B11002B409E /* Tasks.plist */,
+				68C2B9D11A6EBC04005C034E /* Fonts */,
+				685D88D3198F9B11002B409E /* PinBoardTasks.plist */,
 				68EE78E5197D161800AE88AD /* PinBoardAppDelegate.h */,
 				68EE78E6197D161800AE88AD /* PinBoardAppDelegate.m */,
 				68EE791E197D1C6B00AE88AD /* PinBoardColumn.h */,
@@ -237,11 +282,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68C2B9E81A6EBC04005C034E /* Roboto-Thin.ttf in Resources */,
+				68C2B9E51A6EBC04005C034E /* Roboto-Medium.ttf in Resources */,
+				68C2B9E11A6EBC04005C034E /* Roboto-BoldItalic.ttf in Resources */,
 				68EE78EF197D161800AE88AD /* Images.xcassets in Resources */,
+				68C2B9E41A6EBC04005C034E /* Roboto-LightItalic.ttf in Resources */,
+				68C2B9E61A6EBC04005C034E /* Roboto-MediumItalic.ttf in Resources */,
 				68EE78E1197D161800AE88AD /* InfoPlist.strings in Resources */,
+				68C2B9E31A6EBC04005C034E /* Roboto-Light.ttf in Resources */,
 				68EE78EA197D161800AE88AD /* PinBoard.storyboard in Resources */,
-				685D88D4198F9B11002B409E /* Tasks.plist in Resources */,
+				68C2B9DF1A6EBC04005C034E /* Roboto-BlackItalic.ttf in Resources */,
+				68C2B9E91A6EBC04005C034E /* Roboto-ThinItalic.ttf in Resources */,
+				685D88D4198F9B11002B409E /* PinBoardTasks.plist in Resources */,
 				68EE7925197D405400AE88AD /* ShinobiEssentials.bundle in Resources */,
+				68C2B9E21A6EBC04005C034E /* Roboto-Italic.ttf in Resources */,
+				68C2B9E71A6EBC04005C034E /* Roboto-Regular.ttf in Resources */,
+				68C2B9E01A6EBC04005C034E /* Roboto-Bold.ttf in Resources */,
+				68C2B9DE1A6EBC04005C034E /* Roboto-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +431,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PinBoard/PinBoard-Prefix.pch";
 				INFOPLIST_FILE = "PinBoard/PinBoard-Info.plist";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -391,6 +449,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PinBoard/PinBoard-Prefix.pch";
 				INFOPLIST_FILE = "PinBoard/PinBoard-Info.plist";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

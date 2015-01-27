@@ -8,10 +8,11 @@
 
 #import "PinBoardColumn.h"
 #import "PinBoardTaskView.h"
+#import "ShinobiPlayUtils/UIColor+SPUColor.h"
+#import "ShinobiPlayUtils/UIFont+SPUFont.h"
 
 @interface PinBoardColumn()
 
-@property (strong, nonatomic) UIImage *corkBG;
 @property (strong, nonatomic) UILabel *titleLabel;
 @property (strong, nonatomic) UILabel *flowTotalLabel;
 
@@ -22,12 +23,11 @@
 - (instancetype)initWithFrame:(CGRect)frame andTitle:(NSString*) title {
   // Create a wrapper and style for the flow layout, which we'll use when we instantiate super
   SEssentialsFlowLayoutImagesWrapper *wrapper = [SEssentialsFlowLayoutImagesWrapper new];
-  UIImage *bin = [UIImage imageNamed:@"bin"];
-  wrapper.trashcanImage = bin;
-  wrapper.trashcanMask = bin;
+  wrapper.trashcanMask = [UIImage imageNamed:@"bin"];
   SEssentialsFlowLayoutStyle *style = [[SEssentialsFlowLayoutStyle alloc]
                                        initWithTheme:[ShinobiEssentials theme]
                                        customImages:wrapper];
+  style.trashcanTintColor = [UIColor shinobiDarkGrayColor];
   
   self = [super initWithFrame:frame
               withDeleteIdiom:SEssentialsFlowDeleteIdiomTrashCan
@@ -38,21 +38,19 @@
     self.instantUpdate = YES;
     self.dragsOutsideBounds = YES;
     self.clipsToBounds = NO;
-    self.verticalSubviewSpacing = -5.f;
-    self.verticalPadding = 35;
+    self.verticalSubviewSpacing = 4.f;
+    self.verticalPadding = 50;
     self.clipsToBounds = NO;
     self.animationType = SEssentialsAnimationUser;
+    self.horizontalPadding = 10.f;
     self.style.mainViewTintColor = [UIColor clearColor];
-    
-    // Add background image
-    self.corkBG = [UIImage imageNamed:@"cork_left"];
-    self.style.mainViewTexture = [UIColor colorWithPatternImage:self.corkBG];
+    self.movementAnimationDuration = 0.1;
     
     // Create the total at the bottom
     self.flowTotalLabel = [UILabel new];
     self.flowTotalLabel.textAlignment = NSTextAlignmentCenter;
-    self.flowTotalLabel.font = [UIFont fontWithName:@"AmericanTypewriter-Bold" size:20.f];
-    self.flowTotalLabel.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.95];
+    self.flowTotalLabel.font = [UIFont lightShinobiFontOfSize:20.f];
+    self.flowTotalLabel.textColor = [UIColor shinobiDarkGrayColor];
     self.flowTotalLabel.backgroundColor = [UIColor clearColor];
     [self addSubview:self.flowTotalLabel];
     [self updateFlowTotals];
@@ -60,13 +58,22 @@
     // Create the title at the top
     self.titleLabel = [UILabel new];
     self.titleLabel.text = title;
-    self.titleLabel.font = [UIFont fontWithName:@"AmericanTypewriter-Bold" size:20.f];
-    self.titleLabel.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.95];
+    self.titleLabel.font = [UIFont lightShinobiFontOfSize:24.f];
+    self.titleLabel.textColor = [UIColor shinobiDarkGrayColor];
     self.titleLabel.backgroundColor = [UIColor clearColor];
     [self.titleLabel sizeToFit];
-    self.titleLabel.center = CGPointMake(self.bounds.size.width/2, 20);
+    self.titleLabel.center = CGPointMake(self.bounds.size.width/2, 28);
     [self addSubview:self.titleLabel];
+    
+    // Add a subview with a border (this avoids issues with floating tasks beneath the border)
+    UIView *borderView = [[UIView alloc] initWithFrame:self.bounds];
+    borderView.layer.borderColor = [UIColor shinobiDarkGrayColor].CGColor;
+    borderView.layer.borderWidth = 1;
+    borderView.layer.cornerRadius = 4;
+    [self addSubview:borderView];
+    [self sendSubviewToBack:borderView];
   }
+  
   return self;
 }
 
@@ -89,9 +96,9 @@
     }
   }
   
-  self.flowTotalLabel.text = [NSString stringWithFormat:@"%.2f HOURS", total];
+  self.flowTotalLabel.text = [NSString stringWithFormat:@"%.2f hours", total];
   [self.flowTotalLabel sizeToFit];
-  self.flowTotalLabel.center = CGPointMake(self.bounds.size.width/2, self.bounds.size.height - 20);
+  self.flowTotalLabel.center = CGPointMake(self.bounds.size.width/2, self.bounds.size.height - 23);
 }
 
 - (void)setManager:(id<SEssentialsFlowLayoutDelegate>)manager {

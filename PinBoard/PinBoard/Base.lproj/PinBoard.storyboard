@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Roboto-Light.ttf">
+            <string>Roboto-Light</string>
+            <string>Roboto-Light</string>
+        </mutableArray>
+        <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Pin Board View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -18,139 +27,81 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Pin Board" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RlI-1k-iPy">
-                                        <rect key="frame" x="252" y="0.0" width="400" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="803" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="25"/>
+                                        <color key="textColor" red="0.32549019607843138" green="0.37647058823529411" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cork_frame" id="MSE-aM-YjG">
-                                        <rect key="frame" x="0.0" y="30" width="803" height="540"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                    </imageView>
                                     <view contentMode="scaleToFill" id="3nJ-hM-ffr">
-                                        <rect key="frame" x="22" y="53" width="752" height="490"/>
+                                        <rect key="frame" x="0.0" y="30" width="809" height="540"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="65w-OR-kA5">
-                                        <rect key="frame" x="805" y="502" width="100" height="62"/>
+                                    <imageView userInteractionEnabled="NO" alpha="0.79999999999999982" contentMode="scaleAspectFit" id="65w-OR-kA5">
+                                        <rect key="frame" x="836" y="523" width="44" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" id="tTA-Bt-hxA">
-                                        <rect key="frame" x="805" y="30" width="100" height="288"/>
+                                        <rect key="frame" x="816" y="21" width="90" height="320"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="start over:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="b0d-y1-rim">
-                                                <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Order by:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IoL-lY-5Ag">
+                                                <rect key="frame" x="0.0" y="0.0" width="85" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="16"/>
+                                                <color key="textColor" red="0.32549019607843138" green="0.37647058823529411" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OiZ-ct-wlZ">
-                                                <rect key="frame" x="30" y="38" width="40" height="40"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <state key="normal" title="Refresh Button" image="refresh">
-                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <state key="highlighted">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hhr-80-tXK">
+                                                <rect key="frame" x="0.0" y="156" width="44" height="44"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="tintColor" red="0.32549019607843138" green="0.37647058823529411" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
+                                                <inset key="contentEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
+                                                <state key="normal" title="Descend Button" image="sort_desc"/>
+                                                <connections>
+                                                    <action selector="sortDescending:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sZ2-aG-DL0"/>
+                                                </connections>
+                                            </button>
+                                            <segmentedControl opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="aov-vn-5AL">
+                                                <rect key="frame" x="0.0" y="32" width="90" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <segments>
+                                                    <segment title="Task #" width="40"/>
+                                                    <segment title="Duration" width="40"/>
+                                                    <segment title="Task type" width="40"/>
+                                                </segments>
+                                                <color key="tintColor" red="0.32549019607843138" green="0.37647058823529411" blue="0.41960784313725491" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
+                                                <connections>
+                                                    <action selector="sortControlChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="OTY-W2-Byk"/>
+                                                </connections>
+                                            </segmentedControl>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OiZ-ct-wlZ">
+                                                <rect key="frame" x="0.0" y="243" width="90" height="44"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="16"/>
+                                                <color key="tintColor" red="0.32549019607843138" green="0.37647058823529411" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
+                                                <inset key="titleEdgeInsets" minX="5" minY="2" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Reset" image="refresh">
+                                                    <color key="titleColor" red="0.32549019610000002" green="0.37647058820000001" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="reset" destination="BYZ-38-t0r" eventType="touchUpInside" id="xiK-DS-1I9"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="sort by:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IoL-lY-5Ag">
-                                                <rect key="frame" x="0.0" y="98" width="100" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ytv-dg-qbf">
-                                                <rect key="frame" x="0.0" y="128" width="100" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                <state key="normal" title="# task">
-                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <state key="highlighted">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="sortTask:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ldx-OI-in4"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="FeJ-Uw-e9L">
-                                                <rect key="frame" x="0.0" y="158" width="100" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                <state key="normal" title="time">
-                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <state key="selected" backgroundImage="select_sort.png"/>
-                                                <state key="highlighted">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="sortTime:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e3v-V6-hxx"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AUt-NQ-Y1U">
-                                                <rect key="frame" x="0.0" y="188" width="100" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                <state key="normal" title="task type">
-                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <state key="selected">
-                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <state key="highlighted">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="sortType:" destination="BYZ-38-t0r" eventType="touchUpInside" id="muG-EG-sXa"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hhr-80-tXK">
-                                                <rect key="frame" x="5" y="228" width="40" height="40"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <state key="normal" title="Descend Button" image="sort_desc">
-                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <state key="highlighted">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="sortDescending:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sZ2-aG-DL0"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0lB-rL-qGT">
-                                                <rect key="frame" x="55" y="228" width="40" height="40"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <state key="normal" title="Ascend Button" image="sort_asc">
-                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <state key="highlighted">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0lB-rL-qGT">
+                                                <rect key="frame" x="46" y="156" width="44" height="44"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <inset key="contentEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
+                                                <state key="normal" title="Ascend Button" image="sort_asc"/>
                                                 <connections>
                                                     <action selector="sortAscending:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xHH-yz-NXr"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" red="0.32549019607843138" green="0.37647058823529411" blue="0.41568627450980389" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -170,17 +121,12 @@
                         <outlet property="containerView" destination="tKe-Jh-49x" id="cKr-7X-XVS"/>
                         <outlet property="placeholder" destination="3nJ-hM-ffr" id="X0t-un-B9E"/>
                         <outlet property="sortByLabel" destination="IoL-lY-5Ag" id="1gn-In-u1b"/>
-                        <outlet property="startOverLabel" destination="b0d-y1-rim" id="hj6-ML-iz0"/>
-                        <outlet property="taskSortButton" destination="Ytv-dg-qbf" id="tme-8o-ULi"/>
-                        <outlet property="timeSortButton" destination="FeJ-Uw-e9L" id="ih6-U5-JYX"/>
-                        <outlet property="typeSortButton" destination="AUt-NQ-Y1U" id="RtT-2R-xkB"/>
+                        <outlet property="sortOrderControl" destination="aov-vn-5AL" id="4o5-OF-bUI"/>
                         <outlet property="viewTitleLabel" destination="RlI-1k-iPy" id="PGZ-fP-8xd"/>
-                        <outletCollection property="allButtons" destination="OiZ-ct-wlZ" id="kxT-ea-tAm"/>
-                        <outletCollection property="allButtons" destination="Ytv-dg-qbf" id="hKx-AP-Foz"/>
-                        <outletCollection property="allButtons" destination="FeJ-Uw-e9L" id="zmX-OG-G3b"/>
-                        <outletCollection property="allButtons" destination="AUt-NQ-Y1U" id="ncO-4I-G0d"/>
-                        <outletCollection property="allButtons" destination="hhr-80-tXK" id="08t-OV-3hB"/>
-                        <outletCollection property="allButtons" destination="0lB-rL-qGT" id="D5r-hP-zZX"/>
+                        <outletCollection property="allControls" destination="aov-vn-5AL" id="bBo-hX-Jgq"/>
+                        <outletCollection property="allControls" destination="0lB-rL-qGT" id="kcX-hK-liO"/>
+                        <outletCollection property="allControls" destination="hhr-80-tXK" id="VWh-Jx-iUp"/>
+                        <outletCollection property="allControls" destination="OiZ-ct-wlZ" id="IIQ-d1-0km"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -189,11 +135,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="cork_frame" width="836" height="621"/>
-        <image name="refresh" width="53" height="53"/>
-        <image name="select_sort.png" width="1024" height="768"/>
-        <image name="sort_asc" width="53" height="53"/>
-        <image name="sort_desc" width="53" height="53"/>
+        <image name="refresh" width="25" height="25"/>
+        <image name="sort_asc" width="43" height="43"/>
+        <image name="sort_desc" width="43" height="43"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

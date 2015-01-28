@@ -77,7 +77,7 @@
                                                                    padding,
                                                                    frame.size.width - 2 * innerHeight - 4 * padding,
                                                                    innerHeight)];
-    self.taskNameLabel.font = [UIFont shinobiFontOfSize:11];
+    self.taskNameLabel.font = [UIFont shinobiFontOfSize:13];
     self.taskNameLabel.textColor = [UIColor shinobiDarkGrayColor];
     self.taskNameLabel.lineBreakMode = NSLineBreakByWordWrapping;
     self.taskNameLabel.numberOfLines = 0;

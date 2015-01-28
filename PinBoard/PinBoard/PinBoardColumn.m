@@ -40,7 +40,7 @@
   SEssentialsFlowLayoutStyle *style = [[SEssentialsFlowLayoutStyle alloc]
                                        initWithTheme:[ShinobiEssentials theme]
                                        customImages:wrapper];
-  style.trashcanTintColor = [UIColor shinobiDarkGrayColor];
+  style.trashcanTintColor = [[UIColor shinobiDarkGrayColor] colorWithAlphaComponent:0.45];
   
   self = [super initWithFrame:frame
               withDeleteIdiom:SEssentialsFlowDeleteIdiomTrashCan

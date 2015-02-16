@@ -9,8 +9,6 @@
 		<string>Red</string>
 		<key>Minutes</key>
 		<integer>30</integer>
-		<key>Image</key>
-		<string>task_1</string>
 	</dict>
 	<dict>
 		<key>Name</key>
@@ -19,8 +17,6 @@
 		<string>Orange</string>
 		<key>Minutes</key>
 		<integer>15</integer>
-		<key>Image</key>
-		<string>task_2</string>
 	</dict>
 	<dict>
 		<key>Name</key>
@@ -29,8 +25,6 @@
 		<string>Red</string>
 		<key>Minutes</key>
 		<integer>45</integer>
-		<key>Image</key>
-		<string>task_3</string>
 	</dict>
 	<dict>
 		<key>Name</key>
@@ -39,8 +33,6 @@
 		<string>Red</string>
 		<key>Minutes</key>
 		<integer>30</integer>
-		<key>Image</key>
-		<string>task_4</string>
 	</dict>
 	<dict>
 		<key>Name</key>
@@ -49,8 +41,6 @@
 		<string>Blue</string>
 		<key>Minutes</key>
 		<integer>15</integer>
-		<key>Image</key>
-		<string>task_5</string>
 	</dict>
 	<dict>
 		<key>Name</key>
@@ -59,8 +49,6 @@
 		<string>Blue</string>
 		<key>Minutes</key>
 		<integer>60</integer>
-		<key>Image</key>
-		<string>task_6</string>
 	</dict>
 	<dict>
 		<key>Name</key>
@@ -69,8 +57,6 @@
 		<string>Red</string>
 		<key>Minutes</key>
 		<integer>30</integer>
-		<key>Image</key>
-		<string>task_7</string>
 	</dict>
 	<dict>
 		<key>Name</key>
@@ -79,8 +65,6 @@
 		<string>Green</string>
 		<key>Minutes</key>
 		<integer>120</integer>
-		<key>Image</key>
-		<string>task_8</string>
 	</dict>
 	<dict>
 		<key>Name</key>
@@ -89,8 +73,6 @@
 		<string>Green</string>
 		<key>Minutes</key>
 		<integer>180</integer>
-		<key>Image</key>
-		<string>task_9</string>
 	</dict>
 </array>
 </plist>

@@ -34,6 +34,7 @@ typedef NS_ENUM(NSInteger, PinBoardSortFunc) {
 @interface PinBoardViewController ()
 
 @property (strong, nonatomic) NSMutableArray *flowLayouts;
+@property (strong, nonatomic) NSMutableArray *tasksByColumn;
 @property (strong, nonatomic) UILongPressGestureRecognizer *gestureInProgress;
 @property (assign, nonatomic) BOOL descending;
 @property (assign, nonatomic) PinBoardSortFunc selectedSort;
@@ -61,9 +62,6 @@ typedef NS_ENUM(NSInteger, PinBoardSortFunc) {
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  self.initialLoad = YES;
-  [self createFlows];
-  self.initialLoad = NO;
   
   // Style the segmented control
   NSDictionary *attributes = @{ NSFontAttributeName : [UIFont boldShinobiFontOfSize:15],
@@ -93,56 +91,105 @@ typedef NS_ENUM(NSInteger, PinBoardSortFunc) {
   self.sortOrderControl.alpha = 1;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  
+  if (!self.flowLayouts) {
+    self.initialLoad = YES;
+    [self createFlows];
+    self.initialLoad = NO;
+  }
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+  [super viewDidDisappear:animated];
+  
+  // Tear down the flow layouts to save on memory, after saving the current position of
+  // the items
+  for (int i = 0; i < self.flowLayouts.count; i++) {
+    PinBoardColumn *flow = self.flowLayouts[i];
+    self.tasksByColumn[i] = [NSMutableArray new];
+    
+    for (PinBoardTaskView *view in [flow.managedViews copy]) {
+      // Save the task data against the relevant column
+      [self.tasksByColumn[i] addObject:@{ @"Number" : @(view.taskNumber),
+                                          @"Name" : view.taskName,
+                                          @"Color" : view.taskColor,
+                                          @"Minutes" : @(view.taskMins) }];
+      
+      // Remove the view from the flow layout
+      [flow removeManagedSubview:view animated:NO];
+    }
+                         
+    [flow removeFromSuperview];
+  }
+  self.flowLayouts = nil;
+}
+
+
 #pragma mark Multiflow-specific functions
 
 - (void)createFlows {
-  self.flowLayouts = [NSMutableArray new];
-  
-  float borderWidth = 2.f;
-  CGSize flowSize = CGSizeMake(floorf((self.placeholder.frame.size.width - borderWidth*2)/3.f),
-                               self.placeholder.frame.size.height);
-  
-  PinBoardColumn *column1 = [[PinBoardColumn alloc] initWithFrame:CGRectMake(0,
-                                                                             0,
-                                                                             flowSize.width,
-                                                                             flowSize.height)
-                                                         andTitle:@"To Do"];
-  [self configureFlow:column1];
-  
-  PinBoardColumn *column2 = [[PinBoardColumn alloc] initWithFrame:CGRectMake(borderWidth+flowSize.width,
-                                                                             0,
-                                                                             flowSize.width,
-                                                                             flowSize.height)
-                                                         andTitle:@"In Progress"];
-  [self configureFlow:column2];
-  
-  PinBoardColumn *column3 = [[PinBoardColumn alloc] initWithFrame:CGRectMake((borderWidth+flowSize.width)*2,
-                                                                             0,
-                                                                             flowSize.width,
-                                                                             flowSize.height)
-                                                         andTitle:@"Done"];
-  [self configureFlow:column3];
-  
-  [column1 beginEditMode];
-  [self createTasks];
+  if (!self.flowLayouts) {
+    self.flowLayouts = [NSMutableArray new];
+    
+    float borderWidth = 2.f;
+    CGSize flowSize = CGSizeMake(floorf((self.placeholder.frame.size.width - borderWidth*2)/3.f),
+                                 self.placeholder.frame.size.height);
+    
+    PinBoardColumn *column1 = [[PinBoardColumn alloc] initWithFrame:CGRectMake(0,
+                                                                               0,
+                                                                               flowSize.width,
+                                                                               flowSize.height)
+                                                           andTitle:@"To Do"];
+    [self configureFlow:column1];
+    
+    PinBoardColumn *column2 = [[PinBoardColumn alloc] initWithFrame:CGRectMake(borderWidth+flowSize.width,
+                                                                               0,
+                                                                               flowSize.width,
+                                                                               flowSize.height)
+                                                           andTitle:@"In Progress"];
+    [self configureFlow:column2];
+    
+    PinBoardColumn *column3 = [[PinBoardColumn alloc] initWithFrame:CGRectMake((borderWidth+flowSize.width)*2,
+                                                                               0,
+                                                                               flowSize.width,
+                                                                               flowSize.height)
+                                                           andTitle:@"Done"];
+    [self configureFlow:column3];
+    
+    [column1 beginEditMode];
+    [self createTasks];
+  }
 }
 
 - (void)createTasks {
-  // Get task data from property list
-  NSString* path = [[NSBundle mainBundle] pathForResource:@"PinBoardTasks" ofType:@"plist"];
-  NSArray* tasks = [NSArray arrayWithContentsOfFile:path];
-  
-  for (int i = 0; i < [tasks count]; i++) {
-    NSDictionary* task = tasks[i];
-    PinBoardTaskView *view = [[PinBoardTaskView alloc] initWithFrame:CGRectMake(0, 0, 248, 45)];
-    view.taskNumber = i+1;
-    view.taskName = task[@"Name"];
-    view.taskColor = task[@"Color"];
-    view.taskMins = [task[@"Minutes"] longValue];
-    view.clipsToBounds = NO;
+  if (!self.tasksByColumn) {
+    // Get task data from property list
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"PinBoardTasks" ofType:@"plist"];
+    NSArray* tasks = [NSArray arrayWithContentsOfFile:path];
     
-    // Add to the first column ("TODO")
-    [self.flowLayouts[0] addManagedSubview:view];
+    // Put all tasks in first column ("TODO")
+    self.tasksByColumn = [[NSMutableArray alloc] initWithCapacity:3];
+    self.tasksByColumn[0] = tasks;
+  }
+  
+  for (int i = 0; i < [self.tasksByColumn count]; i++) {
+    NSArray *tasks = self.tasksByColumn[i];
+    if (tasks) {
+      for (int j = 0; j < [tasks count]; j++) {
+        NSDictionary* task = tasks[j];
+        PinBoardTaskView *view = [[PinBoardTaskView alloc] initWithFrame:CGRectMake(0, 0, 248, 45)];
+        view.taskNumber = task[@"Number"] ? [task[@"Number"] integerValue] : j+1;
+        view.taskName = task[@"Name"];
+        view.taskColor = task[@"Color"];
+        view.taskMins = [task[@"Minutes"] longValue];
+        view.clipsToBounds = NO;
+        
+        // Add to the relevant column
+        [self.flowLayouts[i] addManagedSubview:view];
+      }
+    }
   }
   
   self.descending = NO;
@@ -314,6 +361,7 @@ typedef NS_ENUM(NSInteger, PinBoardSortFunc) {
   }
   
   self.selectedSort = 0;
+  self.tasksByColumn = nil;
   [self createTasks];
 }
 

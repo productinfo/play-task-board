@@ -104,26 +104,28 @@ typedef NS_ENUM(NSInteger, PinBoardSortFunc) {
 - (void)viewDidDisappear:(BOOL)animated {
   [super viewDidDisappear:animated];
   
-  // Tear down the flow layouts to save on memory, after saving the current position of
-  // the items
-  for (int i = 0; i < self.flowLayouts.count; i++) {
-    PinBoardColumn *flow = self.flowLayouts[i];
-    self.tasksByColumn[i] = [NSMutableArray new];
-    
-    for (PinBoardTaskView *view in [flow.managedViews copy]) {
-      // Save the task data against the relevant column
-      [self.tasksByColumn[i] addObject:@{ @"Number" : @(view.taskNumber),
-                                          @"Name" : view.taskName,
-                                          @"Color" : view.taskColor,
-                                          @"Minutes" : @(view.taskMins) }];
+  if ([self isMovingFromParentViewController]) {
+    // Tear down the flow layouts to save on memory, after saving the current position of
+    // the items
+    for (int i = 0; i < self.flowLayouts.count; i++) {
+      PinBoardColumn *flow = self.flowLayouts[i];
+      self.tasksByColumn[i] = [NSMutableArray new];
       
-      // Remove the view from the flow layout
-      [flow removeManagedSubview:view animated:NO];
+      for (PinBoardTaskView *view in [flow.managedViews copy]) {
+        // Save the task data against the relevant column
+        [self.tasksByColumn[i] addObject:@{ @"Number" : @(view.taskNumber),
+                                            @"Name" : view.taskName,
+                                            @"Color" : view.taskColor,
+                                            @"Minutes" : @(view.taskMins) }];
+        
+        // Remove the view from the flow layout
+        [flow removeManagedSubview:view animated:NO];
+      }
+                           
+      [flow removeFromSuperview];
     }
-                         
-    [flow removeFromSuperview];
+    self.flowLayouts = nil;
   }
-  self.flowLayouts = nil;
 }
 
 

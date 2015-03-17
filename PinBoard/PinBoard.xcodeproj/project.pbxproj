@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		548AE7C71A9F348C000820A9 /* ShinobiEssentials.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 548AE7C61A9F348C000820A9 /* ShinobiEssentials.bundle */; };
 		685D88D4198F9B11002B409E /* PinBoardTasks.plist in Resources */ = {isa = PBXBuildFile; fileRef = 685D88D3198F9B11002B409E /* PinBoardTasks.plist */; };
 		68C2B9DE1A6EBC04005C034E /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68C2B9D21A6EBC04005C034E /* Roboto-Black.ttf */; };
 		68C2B9DF1A6EBC04005C034E /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68C2B9D31A6EBC04005C034E /* Roboto-BlackItalic.ttf */; };
@@ -33,7 +34,6 @@
 		68EE7918197D188B00AE88AD /* ShinobiEssentials.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68EE7917197D188B00AE88AD /* ShinobiEssentials.framework */; };
 		68EE7922197D1C6B00AE88AD /* PinBoardColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EE791F197D1C6B00AE88AD /* PinBoardColumn.m */; };
 		68EE7923197D1C6B00AE88AD /* PinBoardTaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EE7921197D1C6B00AE88AD /* PinBoardTaskView.m */; };
-		68EE7925197D405400AE88AD /* ShinobiEssentials.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 68EE7924197D405400AE88AD /* ShinobiEssentials.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		548AE7C61A9F348C000820A9 /* ShinobiEssentials.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ShinobiEssentials.bundle; path = ../../../../../Library/ShinobiEssentials/ShinobiEssentials.bundle; sourceTree = "<group>"; };
 		685D88D3198F9B11002B409E /* PinBoardTasks.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PinBoardTasks.plist; path = ../PinBoardTasks.plist; sourceTree = "<group>"; };
 		68C2B9D21A6EBC04005C034E /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		68C2B9D31A6EBC04005C034E /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
@@ -95,7 +96,6 @@
 		68EE791F197D1C6B00AE88AD /* PinBoardColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PinBoardColumn.m; sourceTree = "<group>"; };
 		68EE7920197D1C6B00AE88AD /* PinBoardTaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinBoardTaskView.h; sourceTree = "<group>"; };
 		68EE7921197D1C6B00AE88AD /* PinBoardTaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinBoardTaskView.m; sourceTree = "<group>"; };
-		68EE7924197D405400AE88AD /* ShinobiEssentials.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ShinobiEssentials.bundle; path = ../../../../../../../Library/ShinobiEssentials/ShinobiEssentials.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,7 +155,7 @@
 		68EE78D5197D161800AE88AD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				68EE7924197D405400AE88AD /* ShinobiEssentials.bundle */,
+				548AE7C61A9F348C000820A9 /* ShinobiEssentials.bundle */,
 				68EE7917197D188B00AE88AD /* ShinobiEssentials.framework */,
 				68EE78D6197D161800AE88AD /* Foundation.framework */,
 				68EE78D8197D161800AE88AD /* CoreGraphics.framework */,
@@ -294,8 +294,8 @@
 				68C2B9DF1A6EBC04005C034E /* Roboto-BlackItalic.ttf in Resources */,
 				68C2B9E91A6EBC04005C034E /* Roboto-ThinItalic.ttf in Resources */,
 				685D88D4198F9B11002B409E /* PinBoardTasks.plist in Resources */,
-				68EE7925197D405400AE88AD /* ShinobiEssentials.bundle in Resources */,
 				68C2B9E21A6EBC04005C034E /* Roboto-Italic.ttf in Resources */,
+				548AE7C71A9F348C000820A9 /* ShinobiEssentials.bundle in Resources */,
 				68C2B9E71A6EBC04005C034E /* Roboto-Regular.ttf in Resources */,
 				68C2B9E01A6EBC04005C034E /* Roboto-Bold.ttf in Resources */,
 				68C2B9DE1A6EBC04005C034E /* Roboto-Black.ttf in Resources */,

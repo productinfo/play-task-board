@@ -107,7 +107,7 @@ typedef NS_ENUM(NSInteger, PinBoardSortFunc) {
   if ([self isMovingFromParentViewController]) {
     // Tear down the flow layouts to save on memory, after saving the current position of
     // the items
-    for (int i = 0; i < self.flowLayouts.count; i++) {
+    for (NSInteger i = 0; i < self.flowLayouts.count; i++) {
       PinBoardColumn *flow = self.flowLayouts[i];
       self.tasksByColumn[i] = [NSMutableArray new];
       

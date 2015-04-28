@@ -1,4 +1,4 @@
-shinobiplay: Task Board (Objective-C/Swift)
+shinobiplay: Task Board (Objective-C)
 =====================
 
 This project uses the **shinobiessentials** flow layout to create a task board (pin board) where items can be dragged between columns.

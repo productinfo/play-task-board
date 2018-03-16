@@ -1,17 +1,20 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="ipad9_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Roboto-Light.ttf">
+        <array key="Roboto-Light.ttf">
             <string>Roboto-Light</string>
-            <string>Roboto-Light</string>
-        </mutableArray>
-        <mutableArray key="Roboto-Regular.ttf">
+        </array>
+        <array key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <scenes>
         <!--Pin Board View Controller-->
@@ -23,20 +26,20 @@
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleAspectFill" id="tKe-Jh-49x">
-                                <rect key="frame" x="60" y="99" width="905" height="570"/>
+                                <rect key="frame" x="0.0" y="99" width="905" height="570"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Task Board" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RlI-1k-iPy">
                                         <rect key="frame" x="0.0" y="0.0" width="803" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="25"/>
-                                        <color key="textColor" red="0.32549019607843138" green="0.37647058823529411" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.32549019607843138" green="0.37647058823529411" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" id="3nJ-hM-ffr">
                                         <rect key="frame" x="0.0" y="30" width="809" height="540"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <imageView userInteractionEnabled="NO" alpha="0.79999999999999982" contentMode="scaleAspectFit" id="65w-OR-kA5">
                                         <rect key="frame" x="836" y="523" width="44" height="44"/>
@@ -50,13 +53,13 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="85" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="16"/>
-                                                <color key="textColor" red="0.32549019607843138" green="0.37647058823529411" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="0.32549019607843138" green="0.37647058823529411" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hhr-80-tXK">
                                                 <rect key="frame" x="0.0" y="156" width="44" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="tintColor" red="0.32549019607843138" green="0.37647058823529411" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="tintColor" red="0.32549019607843138" green="0.37647058823529411" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <inset key="contentEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                                 <state key="normal" title="Descend Button" image="sort_desc"/>
                                                 <connections>
@@ -67,11 +70,11 @@
                                                 <rect key="frame" x="0.0" y="32" width="90" height="29"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <segments>
-                                                    <segment title="Task #" width="40"/>
-                                                    <segment title="Duration" width="40"/>
-                                                    <segment title="Task type" width="40"/>
+                                                    <segment title="" image="TaskNumber" width="40"/>
+                                                    <segment title="" image="Duration" width="40"/>
+                                                    <segment title="" image="TaskType" width="40"/>
                                                 </segments>
-                                                <color key="tintColor" red="0.32549019607843138" green="0.37647058823529411" blue="0.41960784313725491" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
+                                                <color key="tintColor" red="0.32549019607843138" green="0.37647058823529411" blue="0.41960784313725491" alpha="0.70000000000000007" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <action selector="sortControlChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="OTY-W2-Byk"/>
                                                 </connections>
@@ -80,11 +83,11 @@
                                                 <rect key="frame" x="0.0" y="243" width="90" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="16"/>
-                                                <color key="tintColor" red="0.32549019607843138" green="0.37647058823529411" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="tintColor" red="0.32549019607843138" green="0.37647058823529411" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <inset key="titleEdgeInsets" minX="5" minY="2" maxX="0.0" maxY="0.0"/>
                                                 <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <state key="normal" title="Reset" image="refresh">
-                                                    <color key="titleColor" red="0.32549019610000002" green="0.37647058820000001" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleColor" red="0.32549019610000002" green="0.37647058820000001" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="reset" destination="BYZ-38-t0r" eventType="touchUpInside" id="xiK-DS-1I9"/>
@@ -100,11 +103,11 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <color key="tintColor" red="0.32549019607843138" green="0.37647058823529411" blue="0.41568627450980389" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="0.32549019607843138" green="0.37647058823529411" blue="0.41568627450980389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                         <integer key="value" value="0"/>
@@ -112,10 +115,9 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="binImageView" destination="65w-OR-kA5" id="6IN-d2-hab"/>
                         <outlet property="containerView" destination="tKe-Jh-49x" id="cKr-7X-XVS"/>
@@ -135,13 +137,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Duration" width="11" height="54"/>
+        <image name="TaskNumber" width="11" height="44"/>
+        <image name="TaskType" width="14" height="62"/>
         <image name="refresh" width="25" height="25"/>
         <image name="sort_asc" width="43" height="43"/>
         <image name="sort_desc" width="43" height="43"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination"/>
-    </simulatedMetricsContainer>
 </document>

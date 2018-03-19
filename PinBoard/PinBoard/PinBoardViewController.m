@@ -63,32 +63,9 @@ typedef NS_ENUM(NSInteger, PinBoardSortFunc) {
 - (void)viewDidLoad {
   [super viewDidLoad];
   
-  // Style the segmented control
-  NSDictionary *attributes = @{ NSFontAttributeName : [UIFont boldShinobiFontOfSize:15],
-                                NSForegroundColorAttributeName : [UIColor shinobiDarkGrayColor] };
-  [self.sortOrderControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
-  NSDictionary *highlightedAttributes = @{ NSForegroundColorAttributeName : [UIColor whiteColor]};
-  [self.sortOrderControl setTitleTextAttributes:highlightedAttributes forState:UIControlStateHighlighted];
-  
-  // Set its frame and rotate it so we've got a vertical version
+  // Set the segmented control's frame and rotate it so we've got a vertical version
   self.sortOrderControl.frame = CGRectMake(-15, 44, 120, 90);
   self.sortOrderControl.transform = CGAffineTransformMakeRotation(M_PI / 2.0);
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-  // Rotate the labels within the segmented control in the opposite direction to the way we
-  // rotated the control itself, so they're the right way round again
-  for (UIView *segment in [self.sortOrderControl subviews]) {
-    for (UIView *subview in [segment subviews]) {
-      if ([subview isKindOfClass:[UILabel class]]) {
-        UILabel *label = (UILabel*) subview;
-        label.transform = CGAffineTransformMakeRotation(-M_PI / 2.0);
-      }
-    }
-  }
-  
-  // Make the control appear now it's properly rotated
-  self.sortOrderControl.alpha = 1;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
